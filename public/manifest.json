@@ -1,0 +1,27 @@
+{
+  "name": "छठ महापर्व 2026 | Chhath Mahaparv",
+  "short_name": "Chhath 2026",
+  "description": "सूर्य देव और छठी मैया को समर्पित आस्था के महापर्व का पावन डिजिटल अनुभव। लाइव काउंटडाउन, सूर्य अर्घ्य मुहूर्त और पारंपरिक संगीत।",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050814",
+  "theme_color": "#050814",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "culture", "spirituality"],
+  "lang": "hi"
+}
+

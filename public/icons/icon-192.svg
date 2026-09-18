@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f1b3e"/>
+      <stop offset="60%" stop-color="#070c1d"/>
+      <stop offset="100%" stop-color="#030610"/>
+    </radialGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffedd5" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#fb923c" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ea580c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="40%" stop-color="#f59e0b"/>
+      <stop offset="80%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="diyaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <rect width="192" height="192" rx="44" fill="url(#bgGrad)"/>
+  <rect width="192" height="192" rx="44" fill="none" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="2"/>
+
+  <!-- Sun Glow Halo -->
+  <circle cx="96" cy="85" r="55" fill="url(#sunGlow)"/>
+
+  <!-- Water Shimmer at base -->
+  <path d="M20 145 Q 58 140 96 145 T 172 145" fill="none" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="2"/>
+  <path d="M35 155 Q 65 152 96 155 T 157 155" fill="none" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="1.5"/>
+
+  <!-- Clay Diya Base -->
+  <ellipse cx="96" cy="115" rx="36" ry="16" fill="url(#diyaGrad)" stroke="#451a03" stroke-width="2"/>
+  <ellipse cx="96" cy="111" rx="33" ry="7" fill="#fbbf24" fill-opacity="0.6"/>
+
+  <!-- Sacred Flame -->
+  <path d="M96 60 C 86 85 80 98 80 110 C 80 120 87 122 96 122 C 105 122 112 120 112 110 C 112 98 106 85 96 60 Z" fill="url(#flameGrad)" filter="drop-shadow(0 0 8px #f59e0b)"/>
+
+  <!-- Inner hot core -->
+  <path d="M96 82 C 90 95 87 103 87 110 C 87 115 91 117 96 117 C 101 117 105 115 105 110 C 105 103 102 95 96 82 Z" fill="#ffffff" fill-opacity="0.85"/>
+</svg>
+

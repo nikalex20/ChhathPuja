@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Rozha+One&family=Noto+Sans+Devanagari:wght@700;900&display=swap');
+
+.font-hindi {
+  font-family: 'Rozha One', 'Noto Sans Devanagari', 'Nirmala UI', 'Segoe UI', system-ui, sans-serif;
+  letter-spacing: 0 !important;
+}
+
+@layer base {
+  :root {
+    --bg-deep: #050814;
+    --bg-surface: #0a1128;
+    --gold-primary: #ffb703;
+    --gold-warm: #fb8500;
+    --saffron: #f97316;
+    --vermillion: #c2410c;
+    --river-water: #0d1b3e;
+    --cream: #fffdf7;
+    --text-muted: #94a3b8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg-deep);
+    color: var(--cream);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+/* Custom Glassmorphism */
+.glass-panel {
+  background: rgba(10, 17, 40, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 183, 3, 0.15);
+}
+
+.glass-panel-gold {
+  background: linear-gradient(135deg, rgba(251, 133, 0, 0.15) 0%, rgba(10, 17, 40, 0.8) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 183, 3, 0.3);
+}
+
+.glass-pill {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Gold Glows and Radiant Highlights */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff2cc 0%, #ffb703 50%, #fb8500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-saffron-gradient {
+  background: linear-gradient(135deg, #ffedd5 0%, #fb923c 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-gold {
+  box-shadow: 0 0 35px -5px rgba(255, 183, 3, 0.35);
+}
+
+.glow-diya {
+  box-shadow: 0 0 25px 2px rgba(251, 133, 0, 0.45);
+}
+
+.glow-sun {
+  box-shadow: 0 0 80px 20px rgba(251, 133, 0, 0.3);
+}
+
+/* Radiant Radial Gradients for Atmospheres */
+.bg-radial-dawn {
+  background: radial-gradient(circle at 50% 15%, rgba(251, 133, 0, 0.22) 0%, rgba(15, 23, 62, 0.6) 45%, rgba(5, 8, 20, 0.95) 100%);
+}
+
+.bg-radial-sunset {
+  background: radial-gradient(circle at 50% 20%, rgba(234, 88, 12, 0.25) 0%, rgba(30, 27, 75, 0.6) 50%, rgba(5, 8, 20, 0.98) 100%);
+}
+
+/* Subtle Shimmer Animation */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.92;
+  }
+  25% {
+    transform: scale(1.05) rotate(1deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.96) rotate(-0.5deg);
+    opacity: 0.88;
+  }
+  75% {
+    transform: scale(1.03) rotate(1.5deg);
+    opacity: 0.97;
+  }
+}
+
+.animate-flame {
+  animation: flameFlicker 2.2s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 183, 3, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 183, 3, 0.45);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
