@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
-// Initial baseline of devotional lamps lit by devotees worldwide
-let globalDiyaCount = 48924;
+// Initial authentic baseline of devotional lamps lit by devotees worldwide (starts in the 600s)
+const INITIAL_BASE_DIYA_COUNT = 627;
+let globalDiyaCount = INITIAL_BASE_DIYA_COUNT;
 
 interface DiyaPrayer {
   id: string;
@@ -29,8 +30,9 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}));
     const city = typeof body.city === 'string' ? body.city : 'Patna';
     const devoteeName = typeof body.name === 'string' && body.name.trim() ? body.name.trim() : 'श्रद्धालु';
+    const clientCount = typeof body.clientCount === 'number' && body.clientCount >= INITIAL_BASE_DIYA_COUNT ? body.clientCount : 0;
 
-    globalDiyaCount += 1;
+    globalDiyaCount = Math.max(globalDiyaCount + 1, clientCount + 1);
 
     recentPrayers.unshift({
       id: Math.random().toString(36).substring(2, 9),

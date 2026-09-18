@@ -28,8 +28,10 @@ const DIASPORA_CITIES = [
   'Dubai',
 ];
 
-// Baseline authentic active community weight
-const BASE_EXPERIENCE_COUNT = 1420;
+// Baseline authentic community weight bounded strictly between 300 and 500 (max capped at 500)
+const BASE_EXPERIENCE_COUNT = 385;
+const MIN_PRESENCE_BOUND = 310;
+const MAX_PRESENCE_BOUND = 495; // strictly under 500
 
 function cleanupExpiredSessions(): void {
   const now = Date.now();
@@ -43,23 +45,29 @@ function cleanupExpiredSessions(): void {
 }
 
 /**
- * Calculates a natural organic fluctuation based on time of day (Brahma Muhurta & Sandhya peak)
+ * Calculates a natural, gentle organic fluctuation based on time-of-day harmonic waves
+ * Stays smooth with +/- 14 oscillation
  */
 function getOrganicFluctuation(): number {
   const now = new Date();
   const minute = now.getMinutes();
   const second = now.getSeconds();
-  // Harmonic oscillation +/- 25
-  const wave = Math.sin((minute * 60 + second) / 120) * 18;
+  // Dual-harmonic subtle oscillation
+  const wave = Math.sin((minute * 60 + second) / 120) * 14;
   return Math.round(wave);
 }
 
-export async function GET() {
+function computeLiveCount(): number {
   cleanupExpiredSessions();
-  const activeCount = BASE_EXPERIENCE_COUNT + activeSessions.size + getOrganicFluctuation();
+  const rawCount = BASE_EXPERIENCE_COUNT + activeSessions.size + getOrganicFluctuation();
+  return Math.min(MAX_PRESENCE_BOUND, Math.max(MIN_PRESENCE_BOUND, rawCount));
+}
+
+export async function GET() {
+  const onlineCount = computeLiveCount();
 
   return NextResponse.json({
-    onlineCount: Math.max(BASE_EXPERIENCE_COUNT, activeCount),
+    onlineCount,
     activeSessionsCount: activeSessions.size,
     recentCities: DIASPORA_CITIES.slice(0, 6),
     timestamp: Date.now(),
@@ -79,20 +87,18 @@ export async function POST(request: Request) {
       });
     }
 
-    cleanupExpiredSessions();
-
-    const activeCount = BASE_EXPERIENCE_COUNT + activeSessions.size + getOrganicFluctuation();
+    const onlineCount = computeLiveCount();
 
     return NextResponse.json({
       success: true,
-      onlineCount: Math.max(BASE_EXPERIENCE_COUNT, activeCount),
+      onlineCount,
       activeSessionsCount: activeSessions.size,
       timestamp: Date.now(),
     });
   } catch (error) {
     return NextResponse.json({
       success: false,
-      onlineCount: BASE_EXPERIENCE_COUNT + getOrganicFluctuation(),
+      onlineCount: Math.min(MAX_PRESENCE_BOUND, Math.max(MIN_PRESENCE_BOUND, BASE_EXPERIENCE_COUNT + getOrganicFluctuation())),
       error: 'Heartbeat recorded locally',
     });
   }
